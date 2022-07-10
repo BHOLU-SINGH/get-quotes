@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Inspirational Quotes | Free Projects1</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="In this project, we will get a inspirational quote every time when we'll click on new button">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <p id="quote">If debugging is the process of removing software bugs, then programming must be the process of putting them in.</p>
+        <p id="author" class="author">E.W. Dijkastra</p>
+        <button class="btn" type="submit" onclick="getQuotes()">New</button>
+    </div>
+
+    <script>
+        const Quote = document.getElementById("quote");
+        const Author = document.getElementById("author");
+
+        function getQuotes() {
+            fetch("http://quotes.stormconsultancy.co.uk/random.json")
+            .then((res) =>{
+                return res.json();
+            })
+            .then((data) =>{
+                Quote.innerText = data.quote;
+                Author.innerText = '-${data.author}';
+            })
+        }
+    </script>
+</body>
+</html>
